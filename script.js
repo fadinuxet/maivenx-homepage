@@ -77,12 +77,50 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Form submission
-    const contactForm = document.querySelector('.contact-form form');
+    const contactForm = document.querySelector('#contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            console.log('Contact form submitted');
-            alert('Thank you! We\'ll get back to you soon.');
+            
+            const formData = new FormData(this);
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalText = submitButton.innerHTML;
+            
+            // Show loading state
+            submitButton.innerHTML = '<span>Sending...</span><i class="fas fa-spinner fa-spin"></i>';
+            submitButton.disabled = true;
+            
+            // Submit to Formspree
+            fetch(this.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Show success message
+                    document.getElementById('successMessage').style.display = 'block';
+                    this.reset();
+                    
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        document.getElementById('successMessage').style.display = 'none';
+                    }, 5000);
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Sorry, there was an error sending your message. Please try again or email us directly at info@maivenx.com');
+            })
+            .finally(() => {
+                // Reset button
+                submitButton.innerHTML = originalText;
+                submitButton.disabled = false;
+            });
         });
     }
     

@@ -306,21 +306,26 @@
                     </div>
                 </div>
                 <div class="contact-form" data-aos="fade-left">
-                    <form>
+                    <form id="contactForm" action="https://formspree.io/f/xyzprngd" method="POST">
                         <div class="form-group">
-                            <input type="text" placeholder="Your Name" required>
+                            <input type="text" name="name" placeholder="Your Name" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" placeholder="Your Email" required>
+                            <input type="email" name="email" placeholder="Your Email" required>
                         </div>
                         <div class="form-group">
-                            <textarea placeholder="Tell us about your problem..." rows="4" required></textarea>
+                            <textarea name="message" placeholder="Tell us about your problem..." rows="4" required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">
                             <span>Start the Conversation</span>
                             <i class="fas fa-paper-plane"></i>
                         </button>
                     </form>
+                    <div id="successMessage" style="display: none; text-align: center; padding: 20px; background: #10b981; color: white; border-radius: 8px; margin-top: 20px;">
+                        <i class="fas fa-check-circle" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                        <h3>Message Sent Successfully!</h3>
+                        <p>Thank you for reaching out. We'll get back to you within 24 hours.</p>
+                    </div>
                 </div>
             </div>
         </div>
