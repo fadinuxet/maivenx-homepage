@@ -100,14 +100,17 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then(response => {
                 if (response.ok) {
-                    // Show success message
-                    document.getElementById('successMessage').style.display = 'block';
-                    this.reset();
+                    // Show professional success modal
+                    const modal = document.getElementById('successModal');
+                    modal.style.display = 'block';
                     
-                    // Hide success message after 5 seconds
+                    // Trigger animation
                     setTimeout(() => {
-                        document.getElementById('successMessage').style.display = 'none';
-                    }, 5000);
+                        modal.classList.add('show');
+                    }, 10);
+                    
+                    // Reset form
+                    this.reset();
                 } else {
                     throw new Error('Form submission failed');
                 }
@@ -137,3 +140,25 @@ window.testNavigation = function() {
         console.error('Test link not found');
     }
 };
+
+// Close success modal function
+window.closeSuccessModal = function() {
+    const modal = document.getElementById('successModal');
+    modal.classList.remove('show');
+    
+    setTimeout(() => {
+        modal.style.display = 'none';
+    }, 300);
+};
+
+// Close modal when clicking outside
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('successModal');
+    if (modal) {
+        modal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeSuccessModal();
+            }
+        });
+    }
+});

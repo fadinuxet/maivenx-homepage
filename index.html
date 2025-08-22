@@ -321,10 +321,39 @@
                             <i class="fas fa-paper-plane"></i>
                         </button>
                     </form>
-                    <div id="successMessage" style="display: none; text-align: center; padding: 20px; background: #10b981; color: white; border-radius: 8px; margin-top: 20px;">
-                        <i class="fas fa-check-circle" style="font-size: 2rem; margin-bottom: 10px;"></i>
-                        <h3>Message Sent Successfully!</h3>
-                        <p>Thank you for reaching out. We'll get back to you within 24 hours.</p>
+                    <!-- Professional Success Modal -->
+                    <div id="successModal" class="success-modal">
+                        <div class="success-modal-content">
+                            <div class="success-modal-header">
+                                <div class="success-icon">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <h3>Message Sent Successfully!</h3>
+                                <p>Thank you for reaching out to mAIvenX™</p>
+                            </div>
+                            <div class="success-modal-body">
+                                <div class="success-details">
+                                    <div class="detail-item">
+                                        <i class="fas fa-clock"></i>
+                                        <span>We'll respond within 24 hours</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-envelope"></i>
+                                        <span>Check your email for confirmation</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-robot"></i>
+                                        <span>Our AI team is reviewing your request</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="success-modal-footer">
+                                <button class="btn btn-primary" onclick="closeSuccessModal()">
+                                    <span>Continue Exploring</span>
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
